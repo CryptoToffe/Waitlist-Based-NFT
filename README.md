@@ -57,18 +57,6 @@ contract MyNFT is ERC721Base {
 
 ## Deploy your own
 
-You'll want to fork this repository and deploy your own image generator.
+You'll want to fork this repository and deploy your own by [Thirdweb](https://thirdweb.com)
 
-1. Click the fork button at the top right of GitHub
-2. Clone the repo to your local machine with `git clone URL_OF_FORKED_REPO_HERE`
-3. Change directory with `cd og-image`
-4. Make changes by swapping out images, changing colors, etc (see [contributing](https://github.com/vercel/og-image/blob/main/CONTRIBUTING.md) for more info)
-5. Remove all configuration inside `vercel.json` besides `rewrites`
-6. Run locally with `vercel dev` and visit [localhost:3000](http://localhost:3000)  (if nothing happens, run `npm install -g vercel`)
-7. Deploy to the cloud by running `vercel` and you'll get a unique URL
-8. Connect [Vercel for GitHub](https://vercel.com/github) to automatically deploy each time you `git push` 🚀
 
-## Authors
-
-- Steven ([@styfle](https://twitter.com/styfle)) - [Vercel](https://vercel.com)
-- Evil Rabbit ([@evilrabbit](https://twitter.com/evilrabbit_)) - [Vercel](https://vercel.com)
