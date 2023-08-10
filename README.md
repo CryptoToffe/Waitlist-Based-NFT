@@ -6,50 +6,54 @@ Install the latest version of the SDK <br>
 npm install @thirdweb-dev/sdk ethers@5
 ```
 
-<a href="https://twitter.com/vercel">
-    <img align="right" src="https://og-image.vercel.app/tweet.png" height="300" />
+<a href="https://twitter.com/thirdweb">
+    <img align="right" src="https://ipfs.io/ipfs/QmWVGsFo9HCQRtfa6pN8ku7uXp6N5BX2dyXU2SN5q5yvat?filename=Screenshot_100.png" height="300" />
 </a>
 
-Serverless service that generates dynamic Open Graph images that you can embed in your `<meta>` tags.
+Uploading Contract Metadata to IPFS images that you can embed in your `<meta>` tags.
 
 For each keystroke, headless chromium is used to render an HTML page and take a screenshot of the result which gets cached.
 
 See the image embedded in the tweet for a real use case.
 
 
-## What is an Open Graph Image?
+## Uploading Contract Metadata to IPFS
 
-Have you ever posted a hyperlink to Twitter, Facebook, or Slack and seen an image popup?
-How did your social network know how to "unfurl" the URL and get an image?
-The answer is in your `<head>`.
+By using Deploy:
 
-The [Open Graph protocol](http://ogp.me) says you can put a `<meta>` tag in the `<head>` of a webpage to define this image.
+Your contract metadata is automatically uploaded to IPFS meaning that we can make use of solc's default behavior to unlock our SDKs.
+Your contract is automatically verified on Sourcify.
+This makes it easy to build web3 apps, using our SDKs, without having to copy or update the contract ABI. Instead, the ABI is retrieved from the contract metadata uploaded to IPFS! This acts as a source of truth and thus is always up to date.
 
-It looks like the following:
-
-```html
-<head>
-  <title>Title</title>
-  <meta property="og:image" content="http://example.com/logo.jpg" />
-</head>
-```
-
-## Why use this service?
-
-The short answer is that it would take a long time to painstakingly design an image for every single blog post and every single documentation page. And we don't want the exact same image for every blog post because that wouldn't make the article stand out when it was shared to Twitter. 
-
-That's where `og-image.vercel.app` comes in. We can simply pass the title of our blog post to our generator service and it will generate the image for us on the fly!
-
-It looks like the following:
+For more information on how contracts are automatically verified using Deploy, visit the "Self-verifiable contracts using solc and IPFS" blog post.
 
 ```html
-<head>
-  <title>Hello World</title>
-  <meta property="og:image" content="https://og-image.vercel.app/Hello%20World.png" />
-</head>
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "@thirdweb-dev/contracts/base/ERC721Base.sol";
+
+contract MyNFT is ERC721Base {
+
+      constructor(
+        address _defaultAdmin,
+        string memory _name,
+        string memory _symbol,
+        address _royaltyRecipient,
+        uint128 _royaltyBps
+    )
+        ERC721Base(
+            _defaultAdmin,
+            _name,
+            _symbol,
+            _royaltyRecipient,
+            _royaltyBps
+        )
+    {}
+
+}
 ```
 
-Now try changing the text `Hello%20World` to the title of your choosing and watch the magic happen ✨
 
 ## Deploy your own
 
